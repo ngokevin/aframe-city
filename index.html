@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A-Frame City</title>
+    <meta name="description" content="A-Frame City">
+    <script src="lib/aframe.min.js"></script>
+    <script src="lib/aframe-template-component.min.js"></script>
+    <script src="components/geometry-merge.js"></script>
+    <script src="shaders/sky.js"></script>
+  </head>
+  <body>
+    <a-scene stats>
+      <a-assets>
+        <a-mixin id="street" geometry="primitive: box; depth: 50; height: 0.1; width: 10"
+                             geometry-merge="city"
+                             material="color: gray; shader: flat"></a-mixin>
+        <a-mixin id="street-stripe" geometry="primitive: box; depth: 2; height: .001;
+                                              width: 0.1"
+                                    geometry-merge="city"
+                                    material="color: #FFCC00; shader: flat"></a-mixin>
+
+        <script id="streets" type="text/x-nunjucks-template">
+          {% for x in range(10) %}
+            {% for z in range(10) %}
+              <a-entity mixin="street" position="{{ x * blocksize }} 0 {{ z * blocksize }}">
+
+                {% for i in range(10) %}
+                  <a-entity mixin="street-stripe" position="0 0.1 {{ i * 5 }}"></a-entity>
+                {% endfor %}
+              </a-entity>
+              <a-entity mixin="street" position="{{ x * blocksize }} 0 {{ z * blocksize }}"
+                                       rotation="0 90 0">
+                {% for i in range(10) %}
+                  <a-entity mixin="street-stripe" position="0 0.1 {{ i * 5 }}"></a-entity>
+                {% endfor %}
+              </a-entity>
+            {% endfor %}
+          {% endfor %}
+        </script>
+      </a-assets>
+
+      <a-sky material="shader: sky"></a-sky>
+
+      <a-entity template="src: #streets" data-blocksize="50"></a-entity>
+    </a-scene>
+  </body>
+</html>
