@@ -11,18 +11,24 @@
     <script src="shaders/street.js"></script>
   </head>
   <body>
-    <a-scene stats>
+    <a-scene fog="near: 1; far: 15" stats>
       <a-assets>
-        <a-mixin id="street" geometry="primitive: box; depth: 50; height: 0.1; width: 10"
+        <a-mixin id="street" geometry="primitive: box; depth: 20; height: 0.1; width: 10"
                              geometry-merge="city"
                              material="shader: street"></a-mixin>
 
         <script id="streets" type="text/x-nunjucks-template">
+          // City block of streets. #
           {% for x in range(10) %}
             {% for z in range(10) %}
-              <a-entity mixin="street" position="{{ x * blocksize }} 0 {{ z * blocksize }}"></a-entity>
-              <a-entity mixin="street" position="{{ x * blocksize }} 0 {{ z * blocksize }}"
-                                       rotation="0 90 0"></a-entity>
+              <a-entity position="{{ x * blocksize }} 0 {{ z * blocksize }}">
+                <a-entity mixin="street" position="-15 0 0"></a-entity>
+                <a-entity mixin="street" position="15 0 0"></a-entity>
+                <a-entity mixin="street" position="0 0 -15" rotation="0 90 0"
+                                         geometry="depth: 50"></a-entity>
+                <a-entity mixin="street" position="0 0 15" rotation="0 90 0"
+                                         geometry="depth: 50"></a-entity>
+              </a-entity>
             {% endfor %}
           {% endfor %}
         </script>
