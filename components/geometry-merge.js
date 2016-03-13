@@ -28,7 +28,8 @@ AFRAME.registerComponent('geometry-merge', {
 
   init: function () {
     var layerName = this.data;
-    THREE.GeometryUtils.merge(this.system.getOrCreateLayer(layerName),
-                              this.el.getObject3D('mesh').geometry);
+    var geo1 = this.system.getOrCreateLayer(layerName);
+    var geo2 = this.el.getObject3D('mesh').geometry;
+    geo1.merge(geo2);
   }
 });

@@ -1,0 +1,37 @@
+<a-mixin id="rotated" rotation="0 90 0"></a-mixin>
+<a-mixin id="street" geometry="primitive: box; depth: 50; height: 0.1; width: 10"
+                     geometry-merge="city"
+                     material="shader: street"></a-mixin>
+<a-mixin id="connector" geometry="depth: 25"></a-mixin>
+<a-mixin id="intersection" geometry="primitive: box; depth: 10; height: 0.1; width: 10"
+                     geometry-merge="city"
+                     material="shader: flat; color: #AAA"
+                     rotation="0 90 0"></a-mixin>
+<a-mixin id="block"
+         geometry="primitive: box; depth: 50; height: 0.1; width: 50"
+         geometry-merge="city"
+         material="shader: flat"></a-mixin>
+
+<!-- Lay a grid of street grids. -->
+{% for x in range(xnum) %}
+  {% for z in range(znum) %}
+    <a-entity position="{{ x * 120 }} 0 {{ z * 120 }}"
+              template="src: templates/street-grid.template; type: nunjucks"
+              data-streetlength="50" data-streetwidth="10">
+    </a-entity>
+
+    <!-- Fill in the spaces with city blocks left by the street grids. -->
+    <!-- Middle. -->
+    <a-entity mixin="block"
+              position="{{ x * 120 }} 0 {{ z * 120 }}"></a-entity>
+    <!-- Top . -->
+    <a-entity mixin="block"
+              position="{{ x * 120 }} 0 {{ z * 120 + 60 }}"></a-entity>
+    <!-- Right. -->
+    <a-entity mixin="block"
+              position="{{ x * 120 + 60 }} 0 {{ z * 120 }}"></a-entity>
+    <!-- Top Right. -->
+    <a-entity mixin="block"
+              position="{{ x * 120 + 60 }} 0 {{ z * 120 + 60 }}"></a-entity>
+  {% endfor %}
+{% endfor %}
