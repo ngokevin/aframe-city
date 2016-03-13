@@ -28,11 +28,7 @@
   canvas2.width = 512;
   canvas2.height = 1024;
   context = canvas2.getContext('2d');
-
-  // Disable smoothing.
   context.imageSmoothingEnabled = false;
-  context.webkitImageSmoothingEnabled = false;
-  context.mozImageSmoothingEnabled = false;
 
   // Draw.
   context.drawImage(canvas, 0, 0, canvas2.width, canvas2.height);
