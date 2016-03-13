@@ -1,0 +1,35 @@
+{% set streetlength = 50 %}
+{% set streetwidth = 10 %}
+{% set offset = streetlength / 2 + streetwidth / 2 %}
+{% set negoffset = -1 * offset %}
+{% set halfoffset = streetlength / 4 + streetwidth + streetlength / 2 %}
+{% set neghalfoffset = -1 * halfoffset %}
+
+<a-entity mixin="street" position="{{ negoffset }} 0 0"></a-entity>
+<a-entity mixin="street" position="{{ offset }} 0 0"></a-entity>
+<a-entity mixin="rotated street" position="0 0 {{ negoffset }}"></a-entity>
+<a-entity mixin="rotated street" position="0 0 {{ offset }}"></a-entity>
+
+<a-entity mixin="intersection"
+          position="{{ negoffset }} 0 {{ negoffset }}"></a-entity>
+<a-entity mixin="intersection"
+          position="{{ negoffset }} 0 {{ offset }}"></a-entity>
+<a-entity mixin="intersection" position="{{ offset }} 0 {{ negoffset }}"></a-entity>
+<a-entity mixin="intersection" position="{{ offset }} 0 {{ offset }}"></a-entity>
+
+<a-entity mixin="street connector"
+          position="{{ negoffset }} 0 {{ neghalfoffset }}"></a-entity>
+<a-entity mixin="street connector"
+          position="{{ offset }} 0 {{ neghalfoffset }}"></a-entity>
+<a-entity mixin="street connector"
+          position="{{ negoffset }} 0 {{ halfoffset }}"></a-entity>
+<a-entity mixin="street connector"
+          position="{{ offset }} 0 {{ halfoffset }}"></a-entity>
+<a-entity mixin="rotated street connector"
+          position="{{ neghalfoffset }} 0 {{ offset }}"></a-entity>
+<a-entity mixin="rotated street connector"
+          position="{{ halfoffset }} 0 {{ offset }}"></a-entity>
+<a-entity mixin="rotated street connector"
+          position="{{ neghalfoffset }} 0 {{ negoffset }}"></a-entity>
+<a-entity mixin="rotated street connector"
+          position="{{ halfoffset }} 0 {{ negoffset }}"></a-entity>
