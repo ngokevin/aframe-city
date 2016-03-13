@@ -1,0 +1,23 @@
+{
+  "name": "aframe-city",
+  "version": "0.1.0",
+  "description": "A-Frame City.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "budo --port 8000 --live --open",
+    "ghpages": "ghpages"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngokevin/aframe-city.git"
+  },
+  "keywords": [
+    "aframe"
+  ],
+  "author": "Kevin Ngo <me@ngokevin.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ngokevin/aframe-city/issues"
+  },
+  "homepage": "https://github.com/ngokevin/aframe-city#readme"
+}
