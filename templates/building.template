@@ -1,0 +1,2 @@
+<a-entity geometry="primitive: box; depth: 20; width: 20; height: 70"
+          material building-texture></a-entity>

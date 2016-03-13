@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "dev": "budo --port 8000 --live --open",
-    "ghpages": "npm run preghpages && ghpages -p gh-pages"
+    "ghpages": "ghpages"
   },
   "repository": {
     "type": "git",

@@ -7,6 +7,7 @@
     <script src="lib/nunjucks-v2.3.0.min.js"></script>
     <script src="lib/aframe.min.js"></script>
     <script src="lib/aframe-template-component.min.js"></script>
+    <script src="components/building-texture.js"></script>
     <script src="components/geometry-merge.js"></script>
     <script src="shaders/sky.js"></script>
     <script src="shaders/street.js"></script>
@@ -14,33 +15,13 @@
   <body>
     <a-scene fog="near: 1; far: 15" stats>
       <a-assets>
-        <a-mixin id="rotated" rotation="0 90 0"></a-mixin>
-        <a-mixin id="street" geometry="primitive: box; depth: 50; height: 0.1; width: 10"
-                             geometry-merge="city"
-                             material="shader: street"></a-mixin>
-        <a-mixin id="connector" geometry="depth: 25"></a-mixin>
-        <a-mixin id="intersection" geometry="primitive: box; depth: 10; height: 0.1; width: 10"
-                             geometry-merge="city"
-                             material="shader: flat; color: #AAA"
-                             rotation="0 90 0"></a-mixin>
-
-        <script id="streets" type="text/x-nunjucks-template">
-          {% for x in range(xnum) %}
-            {% for z in range(znum) %}
-              <a-entity position="{{ x * 100 }} 0 {{ z * 100 }}"
-                        template="src: templates/street-block.template; type: nunjucks"
-                        data-streetlength="50" data-streetwidth="10"></a-entity>
-            {% endfor %}
-          {% endfor %}
-        </script>
       </a-assets>
 
-      <a-entity template="src: #streets" data-xnum="10" data-znum="10"></a-entity>
+      <a-entity template="src: templates/city.template; type: nunjucks"
+                data-xnum="10" data-znum="10"></a-entity>
 
       <a-sky material="shader: sky; sunPosition: -1 0.25 0"></a-sky>
-      <a-entity position="500 10 500">
-        <a-camera></a-camera>
-      </a-entity>
+      <a-entity position="500 10 500"><a-camera></a-camera></a-entity>
     </a-scene>
   </body>
 </html>
