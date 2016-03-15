@@ -5,12 +5,12 @@
 <a-mixin id="connector" geometry="depth: 25"></a-mixin>
 <a-mixin id="intersection" geometry="primitive: box; depth: 10; height: 0.1; width: 10"
                      geometry-merge="city"
-                     material="shader: flat; color: #AAA"
+                     material="shader: flat; color: #444"
                      rotation="0 90 0"></a-mixin>
 <a-mixin id="block"
          geometry="primitive: box; depth: 50; height: 0.1; width: 50"
          geometry-merge="city"
-         material="shader: flat"></a-mixin>
+         material="shader: flat; color: #666"></a-mixin>
 
 <!-- Lay a grid of street grids. -->
 {% for x in range(xnum) %}

@@ -1,5 +1,5 @@
 AFRAME.registerShader('street', {
-  schema: {},
+  schema: { x: {} },
 
   vertexShader: [
     'varying vec3 pos;',
