@@ -7,21 +7,25 @@
     <script src="lib/nunjucks-v2.3.0.min.js"></script>
     <script src="lib/aframe.min.js"></script>
     <script src="lib/aframe-template-component.min.js"></script>
+    <script src="components/building-size.js"></script>
     <script src="components/building-texture.js"></script>
     <script src="components/geometry-merge.js"></script>
     <script src="shaders/sky.js"></script>
     <script src="shaders/street.js"></script>
   </head>
   <body>
-    <a-scene stats>
+    <a-scene fog="color: #333; near: 20; far: 300" stats>
       <a-assets>
       </a-assets>
 
       <a-entity template="src: templates/city.template; type: nunjucks"
-                data-xnum="10" data-znum="10"></a-entity>
+                data-xnum="8" data-znum="8"></a-entity>
+
+      <a-light color="#FFF" position="-1 0.25 0"></a-light>
+      <a-light type="ambient" color="#333"></a-light>
 
       <a-sky material="shader: sky; sunPosition: -1 0.25 0"></a-sky>
-      <a-entity position="200 50 200"><a-camera></a-camera></a-entity>
+      <a-entity position="200 1.8 200"><a-camera></a-camera></a-entity>
     </a-scene>
   </body>
 </html>

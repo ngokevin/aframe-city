@@ -35,12 +35,13 @@
 
   // Create texture.
   texture = new THREE.Texture(canvas);
+  texture.needsUpdate = true;
 
   AFRAME.registerComponent('building-texture', {
     dependencies: ['material'],
 
     init: function () {
-      var material = this.el.components.material.material
+      var material = this.el.components.material.material;
       material.map = texture;
       material.needsUpdate = true;
     }

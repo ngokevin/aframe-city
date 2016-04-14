@@ -4,7 +4,7 @@
   "description": "A-Frame City.",
   "main": "index.html",
   "scripts": {
-    "dev": "budo --port 8500 --live --open",
+    "dev": "budo --port 8502 --live --open",
     "ghpages": "ghpages"
   },
   "repository": {

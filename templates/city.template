@@ -11,6 +11,8 @@
          geometry="primitive: box; depth: 50; height: 0.1; width: 50"
          geometry-merge="city"
          material="shader: flat; color: #666"></a-mixin>
+<a-mixin id="building"
+         template="src: templates/building.template; type: nunjucks"></a-mixin>
 
 <!-- Lay a grid of street grids. -->
 {% for x in range(xnum) %}
@@ -21,17 +23,29 @@
     </a-entity>
 
     <!-- Fill in the spaces with city blocks left by the street grids. -->
+
     <!-- Middle. -->
     <a-entity mixin="block"
-              position="{{ x * 120 }} 0 {{ z * 120 }}"></a-entity>
+              position="{{ x * 120 }} 0 {{ z * 120 }}">
+      <a-entity mixin="building"></a-entity>
+    </a-entity>
+
     <!-- Top . -->
     <a-entity mixin="block"
-              position="{{ x * 120 }} 0 {{ z * 120 + 60 }}"></a-entity>
+              position="{{ x * 120 }} 0 {{ z * 120 + 60 }}">
+      <a-entity mixin="building"></a-entity>
+    </a-entity>
+
     <!-- Right. -->
     <a-entity mixin="block"
-              position="{{ x * 120 + 60 }} 0 {{ z * 120 }}"></a-entity>
+              position="{{ x * 120 + 60 }} 0 {{ z * 120 }}">
+      <a-entity mixin="building"></a-entity>
+    </a-entity>
+
     <!-- Top Right. -->
     <a-entity mixin="block"
-              position="{{ x * 120 + 60 }} 0 {{ z * 120 + 60 }}"></a-entity>
+              position="{{ x * 120 + 60 }} 0 {{ z * 120 + 60 }}">
+      <a-entity mixin="building"></a-entity>
+    </a-entity>
   {% endfor %}
 {% endfor %}
